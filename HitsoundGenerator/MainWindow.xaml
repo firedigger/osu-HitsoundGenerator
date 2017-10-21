@@ -1,0 +1,36 @@
+﻿<Window x:Class="HitsoundGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HitsoundGenerator"
+        mc:Ignorable="d"
+        Title="Hitsound generator" Height="370" Width="200" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open .osu" Click="osuSelectButton_Click"/>
+                    <MenuItem Header="_Help" Click="MenuItem_Click"/>
+                    <MenuItem Header="_Exit" Click="exitButton_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Hitsounds">
+                    <MenuItem Header="_Add a hitsound meta" Click="addHitsoundMeta_Click"/>
+                    <MenuItem Header="_Clear list" Click="clearListButton_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Beatmap">
+                    <MenuItem Header="_Generate beatmap" Click="generateBeatmapButton_Click"/>
+                    <MenuItem Header="_Clear hitsounds" Click="MenuItem_Click_2"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        <ListView x:Name="ConfiguredHitsounds" HorizontalAlignment="Left" Height="169" Margin="10,135,0,0" VerticalAlignment="Top" Width="162" ItemsSource="{Binding Path=Patterns, Mode=TwoWay}">
+        </ListView>
+        <TextBox x:Name="difficultyNameTextbox" HorizontalAlignment="Left" Height="20" Margin="10,105,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="162" Text="Generated test" MaxLines="1"/>
+        <Label x:Name="label1" Content="Difficulty/Config name" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label x:Name="songArtist" Content="Artist" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Height="31" FontSize="11"/>
+        <Label x:Name="songTitle" Content="Title" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Height="26" FontSize="11"/>
+        <Button x:Name="deletePatternButton" Content="Delete selected pattern" HorizontalAlignment="Left" Margin="10,309,0,0" VerticalAlignment="Top" Width="162" Click="deletePatternButton_Click"/>
+    </Grid>
+</Window>
