@@ -205,8 +205,6 @@ namespace HitsoundGenerator
             {
                 var pattern = Patterns[index];
 
-                Patterns.RemoveAt(index);
-
                 AddHitsoundingPattern dialog = new AddHitsoundingPattern();
 
                 dialog.startOffsetTextbox.Text = pattern.startOffset.ToString();
@@ -218,9 +216,9 @@ namespace HitsoundGenerator
                 dialog.ShowDialog();
                 if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
                 {
+                    Patterns.RemoveAt(index);
                     Patterns.Add(dialog.hs);
                 }
-
             }
         }
     }
