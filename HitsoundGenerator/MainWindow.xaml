@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HitsoundGenerator"
         mc:Ignorable="d"
-        Title="Hitsound generator" Height="370" Width="200" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
+        Title="Hitsound generator" Height="400" Width="200" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -31,6 +31,7 @@
         <Label x:Name="label1" Content="Difficulty/Config name" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Height="26"/>
         <Label x:Name="songArtist" Content="Artist" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Height="31" FontSize="11"/>
         <Label x:Name="songTitle" Content="Title" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Height="26" FontSize="11"/>
-        <Button x:Name="deletePatternButton" Content="Delete selected pattern" HorizontalAlignment="Left" Margin="10,309,0,0" VerticalAlignment="Top" Width="162" Click="deletePatternButton_Click"/>
+        <Button x:Name="deletePatternButton" Content="Delete selected pattern" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Width="162" Click="deletePatternButton_Click"/>
+        <Button x:Name="editPatternButton" Content="Edit selected pattern" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" Width="162" Click="editPatternButton_Click"/>
     </Grid>
 </Window>

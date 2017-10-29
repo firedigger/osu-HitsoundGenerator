@@ -31,7 +31,7 @@ namespace HitsoundGenerator
             this.period = period;
         }
 
-        private static string shortEffectString(EffectType hs)
+        public static string shortEffectString(EffectType hs)
         {
             switch (hs)
             {
@@ -48,6 +48,8 @@ namespace HitsoundGenerator
 
             foreach(var h in hs)
                 s += shortEffectString(h);
+
+            s += " from " + startOffset + "ms";
 
             return s;
         }

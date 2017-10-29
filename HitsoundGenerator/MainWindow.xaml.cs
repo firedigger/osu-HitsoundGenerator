@@ -108,42 +108,6 @@ namespace HitsoundGenerator
             }
         }
 
-        private void loadConfigButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog selectConfigDialogue = new OpenFileDialog();
-            selectConfigDialogue.Filter = "osu!oABC|*.xml";
-            selectConfigDialogue.Multiselect = false;
-
-            /*if (selectConfigDialogue.ShowDialog() ?? true)
-            {
-                var obj = ConfigStorage.readFromFile(selectConfigDialogue.FileName);
-
-                SelectConfig selectConfig = new SelectConfig(obj);
-
-                if (selectConfig.ShowDialog() ?? true)
-                {
-                    foreach (var p in selectConfig.selected.patterns)
-                        Patterns.Add(p);
-                    difficultyNameTextbox.Text = selectConfig.selected.name;
-                    beatmapStats = selectConfig.selected.beatmapStats;
-                }
-            }*/
-        }
-
-        private void saveConfigButton_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialogue = new SaveFileDialog();
-            saveFileDialogue.Filter = "osu!oABC config|*.xml";
-
-            /*if (saveFileDialogue.ShowDialog() ?? true)
-            {
-                var storage = new ConfigStorage();
-                storage.configs.Add(new PatternConfiguration(difficultyNameTextbox.Text, beatmapStats, Patterns.ToList()));
-                ConfigStorage.saveToFile(saveFileDialogue.FileName,storage);
-                MessageBox.Show("Configuration saved!");
-            }*/
-        }
-
         private void clearListButton_Click(object sender, RoutedEventArgs e)
         {
             Patterns.Clear();
@@ -161,7 +125,7 @@ namespace HitsoundGenerator
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            string help = "Please refer to https://github.com/firedigger/TODO!";
+            string help = "Please refer to https://github.com/firedigger/osu-HitsoundGenerator";
             MessageBox.Show(help, "Help");
         }
 
@@ -215,11 +179,6 @@ namespace HitsoundGenerator
             return true;
         }
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void addHitsoundMeta_Click(object sender, RoutedEventArgs e)
         {
             AddHitsoundingPattern dialog = new AddHitsoundingPattern();
@@ -227,6 +186,41 @@ namespace HitsoundGenerator
             if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
             {
                 Patterns.Add(dialog.hs);
+            }
+        }
+
+        private void editPatternButton_Click(object sender, RoutedEventArgs e)
+        {
+            var items = ConfiguredHitsounds.SelectedItems;
+            if (items.Count > 1)
+            {
+                MessageBox.Show("Please select one pattern");
+                return;
+            }
+
+            int index = ConfiguredHitsounds.SelectedIndex;
+            if (index == -1)
+                MessageBox.Show("Please select a pattern");
+            else
+            {
+                var pattern = Patterns[index];
+
+                Patterns.RemoveAt(index);
+
+                AddHitsoundingPattern dialog = new AddHitsoundingPattern();
+
+                dialog.startOffsetTextbox.Text = pattern.startOffset.ToString();
+                dialog.endOffsetTextbox.Text = pattern.endOffset.ToString();
+                dialog.metaTextBox.Text = string.Join("",pattern.hs.Select(f => ConfiguredHitsound.shortEffectString(f))); //todo
+
+                dialog.divisorComboBox.SelectedIndex = 4 - pattern.period;
+
+                dialog.ShowDialog();
+                if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
+                {
+                    Patterns.Add(dialog.hs);
+                }
+
             }
         }
     }
