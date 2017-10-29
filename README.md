@@ -9,7 +9,8 @@ How to use:
 3) Hitsounds -> Add a hitsounding meta
 4) Encode hitsound template sequence with F for Finish, W for Whistle, C for Clap, any other symbol for skip (for example, _)
 5) Specify the segment with offsets. You can copy objects from the editor and click "Paste" to paste their timing into the textbox.
-6) Input the new difficulty name into the textfield. **NOTE!** It is not safe to ovveride your own .osu file with the generated one, always do backup or save the generated map in a new file. I am not responsible for your map corruption.
+6) Input the new difficulty name into the textfield. **NOTE!** It is not safe to overide your own .osu file with the generated one, always do backup or save the generated map in a new file. I am not responsible for your map corruption.
 Example: "FC" with 1/1 fraction will do your Drum+Percussion on every 2 adjancent downbeats.
 7) Beatmap -> Generate beatmap
+**NOTE!** At the moment Hitsound copier won't immediately work with that file because I corrupt it a bit somehow. To fix the file change a random hitsound and save in osu editor, the editor will fix the file.  
 8) Profit!
